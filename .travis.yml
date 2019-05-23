@@ -7,4 +7,15 @@ before_install:
 
 script:
   - docker run gicta/flowness npm run test -- --coverage
-  
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "Happelz"
+  env: "Happelz-env"
+  bucket_name: "elasticbeanstalk-us-east-2-065243407389"
+  bucket_path: "Happelz"
+  on:
+    branch: master
+  access_key_id: $aws-access-key
+  secret_access_key: "$aws-private-key"
